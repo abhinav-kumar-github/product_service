@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class AbhinavBackendStarterApplication {
     public static void main(String[] args) {
-//        SpringApplication.run(AbhinavBackendStarterApplication.class, args);
-//        System.out.println("Abhinav");
+        SpringApplication.run(AbhinavBackendStarterApplication.class, args);
+        System.out.println("Abhinav Backend Starter Application");
 
     }
 
