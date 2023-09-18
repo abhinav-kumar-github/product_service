@@ -73,7 +73,24 @@ public class FakeStoreThirdPartyClient {
 
         return fakeStoreProductDto;
     }
-    public FakeStoreProductDto updateProduct(GenericProductDto genericProductDto) {
-        return null;
+    public FakeStoreProductDto updateProduct(GenericProductDto genericProductDto) throws NotFoundException, RequestFailedException {
+        FakeStoreProductDto fakeStoreProductDto = getProductById(genericProductDto.getId());
+        if(fakeStoreProductDto == null) {
+            throw new NotFoundException("Product with id " + genericProductDto.getId() + " not found for deletion");
+        }
+
+        RestTemplate restTemplate = restTemplateBuilder.build();
+        String url = productRequestWithIdUrl;
+        RequestCallback requestCallback = restTemplate.httpEntityCallback(FakeStoreProductDto.class);
+        ResponseExtractor<ResponseEntity<FakeStoreProductDto>> responseExtractor
+                = restTemplate.responseEntityExtractor(FakeStoreProductDto.class);
+
+        ResponseEntity<FakeStoreProductDto> response =
+                restTemplate.execute(url, HttpMethod.PUT, requestCallback, responseExtractor, genericProductDto.getId());
+
+        if(!response.getStatusCode().is2xxSuccessful()) {
+            throw new RequestFailedException("Product not updated");
+        }
+        return fakeStoreProductDto;
     }
 }

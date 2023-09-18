@@ -33,8 +33,8 @@ public class FakeStoreProductService implements ProductService{
                 .build();
     }
     @Override
-    public GenericProductDto createProduct(GenericProductDto genericProductDto) {
-        return null;
+    public GenericProductDto createProduct(GenericProductDto genericProductDto) throws RequestFailedException {
+        return convertToGenericProductDto(fakeStoreThirdPartyClient.createProduct(genericProductDto));
     }
     @Override
     public GenericProductDto deleteProductById(long id) {
@@ -43,8 +43,8 @@ public class FakeStoreProductService implements ProductService{
     public GenericProductDto getProductById(long id) throws NotFoundException {
         return convertToGenericProductDto(fakeStoreThirdPartyClient.getProductById(id));
     }
-    public GenericProductDto updateProduct(GenericProductDto genericProductDto) {
-        return null;
+    public GenericProductDto updateProduct(GenericProductDto genericProductDto) throws RequestFailedException, NotFoundException {
+        return convertToGenericProductDto(fakeStoreThirdPartyClient.updateProduct(genericProductDto));
     }
     @Override
     public List<GenericProductDto> getProducts() throws RequestFailedException {

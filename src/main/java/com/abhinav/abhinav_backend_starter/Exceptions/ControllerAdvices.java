@@ -12,9 +12,9 @@ import org.springframework.web.client.RestTemplate;
 @ControllerAdvice
 public class ControllerAdvices {
     @ExceptionHandler(RequestFailedException.class)
-    private ResponseEntity<ExceptionDto> handleRequestFailedException() {
+    private ResponseEntity<ExceptionDto> handleRequestFailedException(RequestFailedException requestFailedException) {
         return new ResponseEntity(
-                new ExceptionDto(HttpStatus.BAD_REQUEST, "Request Failed Exception"),
+                new ExceptionDto(HttpStatus.BAD_REQUEST, requestFailedException.getMessage()),
                 HttpStatus.BAD_REQUEST
         );
     }
