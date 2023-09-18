@@ -1,5 +1,8 @@
 package com.abhinav.abhinav_backend_starter.controllers;
 
+import com.abhinav.abhinav_backend_starter.Exceptions.NotFoundException;
+import com.abhinav.abhinav_backend_starter.Exceptions.RequestFailedException;
+import com.abhinav.abhinav_backend_starter.dtos.ExceptionDto;
 import com.abhinav.abhinav_backend_starter.dtos.GenericProductDto;
 import com.abhinav.abhinav_backend_starter.services.ProductService;
 import org.springframework.http.HttpStatus;
@@ -21,24 +24,26 @@ public class ProductController {
     }
     @GetMapping()
 //    http://localhost:8080/products
-    public ResponseEntity<List<GenericProductDto>> getProducts() {
+    public ResponseEntity<List<GenericProductDto>> getProducts() throws RequestFailedException {
         return new ResponseEntity<>(productService.getProducts(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
 //    http://localhost:8080/products/12345
-    public ResponseEntity<GenericProductDto> getProductById(@PathVariable("id") long id) {
+    public ResponseEntity<GenericProductDto> getProductById(@PathVariable("id") long id) throws NotFoundException {
         return new ResponseEntity<>(productService.getProductById(id), HttpStatus.OK);
     }
 
     @PostMapping
     public ResponseEntity<GenericProductDto> createProduct() {
-        return new ResponseEntity<>(productService.createProduct(new GenericProductDto()), HttpStatus.OK);
+        GenericProductDto genericProductDto = GenericProductDto.builder().build();
+        return new ResponseEntity<>(productService.createProduct(genericProductDto), HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<GenericProductDto> updateProduct(@PathVariable("id") long id) {
-        return new ResponseEntity<>(productService.updateProduct(new GenericProductDto()), HttpStatus.OK);
+        GenericProductDto genericProductDto = GenericProductDto.builder().build();
+        return new ResponseEntity<>(productService.updateProduct(genericProductDto), HttpStatus.OK);
     }
 
     @DeleteMapping ("/{id}")
