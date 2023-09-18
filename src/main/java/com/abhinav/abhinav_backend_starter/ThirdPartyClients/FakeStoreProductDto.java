@@ -1,4 +1,4 @@
-package com.abhinav.abhinav_backend_starter.ThirdPartyClients.FakeStore;
+package com.abhinav.abhinav_backend_starter.ThirdPartyClients;
 
 import lombok.Getter;
 import lombok.Setter;

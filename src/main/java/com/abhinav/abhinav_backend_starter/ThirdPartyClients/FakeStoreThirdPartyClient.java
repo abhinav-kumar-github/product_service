@@ -1,9 +1,7 @@
-package com.abhinav.abhinav_backend_starter.ThirdPartyClients.FakeStore;
+package com.abhinav.abhinav_backend_starter.ThirdPartyClients;
 
 import com.abhinav.abhinav_backend_starter.Exceptions.NotFoundException;
 import com.abhinav.abhinav_backend_starter.Exceptions.RequestFailedException;
-import com.abhinav.abhinav_backend_starter.ThirdPartyClients.FakeStore.FakeStoreProductDto;
-import com.abhinav.abhinav_backend_starter.ThirdPartyClients.ThirdPartyClient;
 import com.abhinav.abhinav_backend_starter.constants.Constants;
 import com.abhinav.abhinav_backend_starter.dtos.GenericProductDto;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -17,7 +15,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 
 @Service
-public class FakeStoreThirdPartyClient implements ThirdPartyClient {
+public class FakeStoreThirdPartyClient {
     private static RestTemplateBuilder restTemplateBuilder = new RestTemplateBuilder();
     private static String productRequestWithIdUrl
             = Constants.FAKE_STORE_API_BASE_URL + Constants.FAKE_STORE_API_PATH_PRODUCT + "/{id}";

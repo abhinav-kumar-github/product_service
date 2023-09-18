@@ -2,8 +2,8 @@ package com.abhinav.abhinav_backend_starter.services;
 
 import com.abhinav.abhinav_backend_starter.Exceptions.NotFoundException;
 import com.abhinav.abhinav_backend_starter.Exceptions.RequestFailedException;
-import com.abhinav.abhinav_backend_starter.ThirdPartyClients.FakeStore.FakeStoreProductDto;
-import com.abhinav.abhinav_backend_starter.ThirdPartyClients.FakeStore.FakeStoreThirdPartyClient;
+import com.abhinav.abhinav_backend_starter.ThirdPartyClients.FakeStoreProductDto;
+import com.abhinav.abhinav_backend_starter.ThirdPartyClients.FakeStoreThirdPartyClient;
 import com.abhinav.abhinav_backend_starter.dtos.GenericProductDto;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
