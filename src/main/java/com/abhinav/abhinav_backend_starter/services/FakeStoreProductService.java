@@ -2,13 +2,10 @@ package com.abhinav.abhinav_backend_starter.services;
 
 import com.abhinav.abhinav_backend_starter.Exceptions.NotFoundException;
 import com.abhinav.abhinav_backend_starter.Exceptions.RequestFailedException;
-import com.abhinav.abhinav_backend_starter.ThirdPartyClients.FakeStoreProductDto;
-import com.abhinav.abhinav_backend_starter.ThirdPartyClients.FakeStoreThirdPartyClient;
+import com.abhinav.abhinav_backend_starter.ThirdPartyClients.FakeStore.FakeStoreProductDto;
+import com.abhinav.abhinav_backend_starter.ThirdPartyClients.FakeStore.FakeStoreThirdPartyClient;
 import com.abhinav.abhinav_backend_starter.dtos.GenericProductDto;
-import lombok.Builder;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -33,28 +30,25 @@ public class FakeStoreProductService implements ProductService{
                 .build();
     }
     @Override
-    public GenericProductDto createProduct(GenericProductDto genericProductDto) throws RequestFailedException {
-        return convertToGenericProductDto(fakeStoreThirdPartyClient.createProduct(genericProductDto));
-    }
-    @Override
-    public GenericProductDto deleteProductById(long id) {
-        return null;
+    public List<GenericProductDto> getProducts() throws RequestFailedException {
+        List<GenericProductDto> genericProductDtos = new ArrayList<>();
+        fakeStoreThirdPartyClient.getProducts()
+                .forEach(f -> genericProductDtos.add(convertToGenericProductDto(f)));
+        return genericProductDtos;
     }
     public GenericProductDto getProductById(long id) throws NotFoundException {
         return convertToGenericProductDto(fakeStoreThirdPartyClient.getProductById(id));
     }
-    public GenericProductDto updateProduct(GenericProductDto genericProductDto) throws RequestFailedException, NotFoundException {
-        return convertToGenericProductDto(fakeStoreThirdPartyClient.updateProduct(genericProductDto));
+    @Override
+    public GenericProductDto createProduct(GenericProductDto genericProductDto) throws RequestFailedException {
+        return convertToGenericProductDto(fakeStoreThirdPartyClient.createProduct(genericProductDto));
     }
     @Override
-    public List<GenericProductDto> getProducts() throws RequestFailedException {
-        List<FakeStoreProductDto> fakeStoreProductDtos = fakeStoreThirdPartyClient.getProducts();
-        System.out.println(fakeStoreProductDtos.size() + " products found abhinav");
-        List<GenericProductDto> genericProductDtos = new ArrayList<>();
-        fakeStoreProductDtos.forEach(fakeStoreProductDto -> {
-            genericProductDtos.add(convertToGenericProductDto(fakeStoreProductDto));
-        });
+    public GenericProductDto deleteProduct(GenericProductDto genericProductDto) {
+        return null;
+    }
 
-        return genericProductDtos;
+    public GenericProductDto updateProduct(GenericProductDto genericProductDto) throws RequestFailedException, NotFoundException {
+        return convertToGenericProductDto(fakeStoreThirdPartyClient.updateProduct(genericProductDto));
     }
 }

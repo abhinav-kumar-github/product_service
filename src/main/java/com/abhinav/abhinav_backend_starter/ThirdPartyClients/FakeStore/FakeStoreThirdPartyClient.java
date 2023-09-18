@@ -1,7 +1,9 @@
-package com.abhinav.abhinav_backend_starter.ThirdPartyClients;
+package com.abhinav.abhinav_backend_starter.ThirdPartyClients.FakeStore;
 
 import com.abhinav.abhinav_backend_starter.Exceptions.NotFoundException;
 import com.abhinav.abhinav_backend_starter.Exceptions.RequestFailedException;
+import com.abhinav.abhinav_backend_starter.ThirdPartyClients.FakeStore.FakeStoreProductDto;
+import com.abhinav.abhinav_backend_starter.ThirdPartyClients.ThirdPartyClient;
 import com.abhinav.abhinav_backend_starter.constants.Constants;
 import com.abhinav.abhinav_backend_starter.dtos.GenericProductDto;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -15,7 +17,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 
 @Service
-public class FakeStoreThirdPartyClient {
+public class FakeStoreThirdPartyClient implements ThirdPartyClient {
     private static RestTemplateBuilder restTemplateBuilder = new RestTemplateBuilder();
     private static String productRequestWithIdUrl
             = Constants.FAKE_STORE_API_BASE_URL + Constants.FAKE_STORE_API_PATH_PRODUCT + "/{id}";
@@ -57,13 +59,14 @@ public class FakeStoreThirdPartyClient {
 
         return fakeStoreProductDto;
     }
-    public FakeStoreProductDto deleteProductById(long id) throws RequestFailedException {
+    public FakeStoreProductDto deleteProduct(GenericProductDto genericProductDto) throws RequestFailedException {
         RestTemplate restTemplate = restTemplateBuilder.build();
         RequestCallback requestCallback = restTemplate.httpEntityCallback(FakeStoreProductDto.class);
         ResponseExtractor<ResponseEntity<FakeStoreProductDto>> responseExtractor
                 = restTemplate.responseEntityExtractor(FakeStoreProductDto.class);
-        ResponseEntity<FakeStoreProductDto> response
-                = restTemplate.execute(productRequestWithIdUrl, HttpMethod.DELETE, requestCallback, responseExtractor, id);
+        ResponseEntity<FakeStoreProductDto> response =
+                restTemplate.execute(productRequestWithIdUrl, HttpMethod.DELETE, requestCallback,
+                        responseExtractor, genericProductDto.getId());
 
         FakeStoreProductDto fakeStoreProductDto = response.getStatusCode().is2xxSuccessful() ? response.getBody() : null;
 
@@ -93,4 +96,5 @@ public class FakeStoreThirdPartyClient {
         }
         return fakeStoreProductDto;
     }
+
 }

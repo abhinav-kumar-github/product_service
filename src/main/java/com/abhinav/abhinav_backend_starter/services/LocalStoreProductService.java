@@ -11,9 +11,7 @@ public class LocalStoreProductService implements ProductService{
         return null;
     }
     @Override
-    public GenericProductDto deleteProductById(long id) {
-        return null;
-    }
+    public GenericProductDto deleteProduct(GenericProductDto genericProductDto) { return null;}
     public GenericProductDto getProductById(long id) {
         return null;
     }
