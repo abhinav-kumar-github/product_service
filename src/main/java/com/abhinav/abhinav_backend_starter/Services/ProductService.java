@@ -1,8 +1,8 @@
-package com.abhinav.abhinav_backend_starter.services;
+package com.abhinav.abhinav_backend_starter.Services;
 
 import com.abhinav.abhinav_backend_starter.Exceptions.NotFoundException;
 import com.abhinav.abhinav_backend_starter.Exceptions.RequestFailedException;
-import com.abhinav.abhinav_backend_starter.dtos.GenericProductDto;
+import com.abhinav.abhinav_backend_starter.Dtos.GenericProductDto;
 
 import java.util.List;
 

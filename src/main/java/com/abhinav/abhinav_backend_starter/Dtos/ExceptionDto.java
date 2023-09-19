@@ -1,4 +1,4 @@
-package com.abhinav.abhinav_backend_starter.dtos;
+package com.abhinav.abhinav_backend_starter.Dtos;
 
 import lombok.Getter;
 import lombok.Setter;

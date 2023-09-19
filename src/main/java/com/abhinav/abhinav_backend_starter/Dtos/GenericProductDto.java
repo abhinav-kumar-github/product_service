@@ -1,6 +1,5 @@
-package com.abhinav.abhinav_backend_starter.dtos;
+package com.abhinav.abhinav_backend_starter.Dtos;
 
-import jdk.jshell.Snippet;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;

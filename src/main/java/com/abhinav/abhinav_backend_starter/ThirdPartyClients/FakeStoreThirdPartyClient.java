@@ -2,8 +2,8 @@ package com.abhinav.abhinav_backend_starter.ThirdPartyClients;
 
 import com.abhinav.abhinav_backend_starter.Exceptions.NotFoundException;
 import com.abhinav.abhinav_backend_starter.Exceptions.RequestFailedException;
-import com.abhinav.abhinav_backend_starter.constants.Constants;
-import com.abhinav.abhinav_backend_starter.dtos.GenericProductDto;
+import com.abhinav.abhinav_backend_starter.Constants.Constants;
+import com.abhinav.abhinav_backend_starter.Dtos.GenericProductDto;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;

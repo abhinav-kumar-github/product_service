@@ -1,6 +1,6 @@
-package com.abhinav.abhinav_backend_starter.services;
+package com.abhinav.abhinav_backend_starter.Services;
 
-import com.abhinav.abhinav_backend_starter.dtos.GenericProductDto;
+import com.abhinav.abhinav_backend_starter.Dtos.GenericProductDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

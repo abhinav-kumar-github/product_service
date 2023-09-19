@@ -1,4 +1,4 @@
-package com.abhinav.abhinav_backend_starter.models;
+package com.abhinav.abhinav_backend_starter.Models;
 
 
 import lombok.*;

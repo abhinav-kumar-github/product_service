@@ -1,9 +1,9 @@
-package com.abhinav.abhinav_backend_starter.controllers;
+package com.abhinav.abhinav_backend_starter.Controllers;
 
 import com.abhinav.abhinav_backend_starter.Exceptions.NotFoundException;
 import com.abhinav.abhinav_backend_starter.Exceptions.RequestFailedException;
-import com.abhinav.abhinav_backend_starter.dtos.GenericProductDto;
-import com.abhinav.abhinav_backend_starter.services.ProductService;
+import com.abhinav.abhinav_backend_starter.Dtos.GenericProductDto;
+import com.abhinav.abhinav_backend_starter.Services.ProductService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

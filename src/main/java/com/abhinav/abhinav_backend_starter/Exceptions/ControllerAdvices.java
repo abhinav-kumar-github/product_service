@@ -1,13 +1,10 @@
 package com.abhinav.abhinav_backend_starter.Exceptions;
 
-import com.abhinav.abhinav_backend_starter.dtos.ExceptionDto;
+import com.abhinav.abhinav_backend_starter.Dtos.ExceptionDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.client.RestTemplate;
 
 @ControllerAdvice
 public class ControllerAdvices {
